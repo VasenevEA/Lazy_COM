@@ -12,35 +12,34 @@ using System.Windows.Forms;
 
 namespace Lazy_COM
 {
-    public partial class Form1 : Form
+    public partial class Lazy_COM : Form
     {
-        static string[] oldPorts = new string[] {"1","2"};
-        static string[] newPorts = new string[] {"1","2","123" };
-       // static List<String> equalsPorts = new List<String>();
+        static string[] oldPorts = new string[] {};
+        static string[] newPorts = new string[] {};
         static string[] equalsPorts = new string[] { };
 
-        public Form1()
+        public Lazy_COM()
         {
             
 
             InitializeComponent();
-            
-            notifyIcon1.Visible = false;
+
+            //по дефолту виден только трей
+            notifyIcon1.Visible = true;
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
+
             this.notifyIcon1.MouseDoubleClick += new MouseEventHandler(notifyIcon1_MouseDoubleClick);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
-
-            Thread backgroundThread = new Thread(checkPorts);
+            //this.Resize += new System.EventHandler(this.Form1_Resize);
+            
+            //настройка меню трея
+            notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.оПрограммеToolStripMenuItem, this.выходToolStripMenuItem });
+            
+            //запуск потока
+            Thread backgroundThread = new Thread(checkPorts); 
             backgroundThread.Start();
-            //equalsPorts = oldPorts.Except(newPorts).Concat(newPorts.Except(oldPorts)).ToArray();
-
-
-           // notifyIcon1.ShowBalloonTip(500, "Сообщение", equalsPorts[0]+"123", ToolTipIcon.Info);
-
-            
-            
-            
         }
-
  
         private void checkPorts()
         {
@@ -53,7 +52,7 @@ namespace Lazy_COM
                 newPorts = SerialPort.GetPortNames();
 
                 equalsPorts = oldPorts.Except(newPorts).Concat(newPorts.Except(oldPorts)).ToArray(); // linq выражения для нахождения разницы между двумя 
-                
+                 
                 if(equalsPorts.Length > 0 )
                 {
                     foreach (string portName in equalsPorts)
@@ -76,29 +75,35 @@ namespace Lazy_COM
         }
 
 
-
+        /*
         private void Form1_Resize(object sender, EventArgs e)
         {
 
             if (WindowState == FormWindowState.Minimized)
             {
                 Hide();
-                notifyIcon1.Visible = true;
-
-                
-                
+                notifyIcon1.Visible = true;  
             }
         }
+
+        */
+
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.Show();
-            notifyIcon1.Visible = false;
-            WindowState = FormWindowState.Normal;
+            //this.Show();
+            //notifyIcon1.Visible = false;
+            //WindowState = FormWindowState.Normal;
         }
 
         private void notifyIcon1_BalloonTipShown(object sender, EventArgs e)
         {
 
+        }
+
+      
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }
