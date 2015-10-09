@@ -24,8 +24,8 @@ namespace Lazy_COM
 
             InitializeComponent();
 
-            //по дефолту виден только трей
-            notifyIcon1.Visible = true;
+            
+            
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
 
@@ -39,6 +39,8 @@ namespace Lazy_COM
             //запуск потока
             Thread backgroundThread = new Thread(checkPorts); 
             backgroundThread.Start();
+            //по дефолту виден только трей
+            notifyIcon1.Visible = true;
         }
  
         private void checkPorts()
@@ -59,7 +61,7 @@ namespace Lazy_COM
                     {
                         if (newPorts.Length > oldPorts.Length)
                         {
-                            this.notifyIcon1.ShowBalloonTip(500, "COM-Port!", "+"+portName, ToolTipIcon.Info);    
+                            this.notifyIcon1.ShowBalloonTip(500, "COM-Port! ", "+"+portName, ToolTipIcon.Info);    
                         }
                         if(newPorts.Length < oldPorts.Length)
                         {
@@ -94,16 +96,20 @@ namespace Lazy_COM
             //notifyIcon1.Visible = false;
             //WindowState = FormWindowState.Normal;
         }
-
-        private void notifyIcon1_BalloonTipShown(object sender, EventArgs e)
-        {
-
-        }
-
-      
+     
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            string portList = "";
+            foreach (string port in oldPorts)
+            {
+                portList += port + "\r\n";
+            }
+            this.notifyIcon1.ShowBalloonTip(1000, "COM-Ports:", portList, ToolTipIcon.Info); 
         }
     }
 }
