@@ -1,12 +1,4 @@
-c:\users\admin\documents\visual studio 2013\Projects\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.exe.config
-c:\users\admin\documents\visual studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.csprojResolveAssemblyReference.cache
-c:\users\admin\documents\visual studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Properties.Resources.resources
-c:\users\admin\documents\visual studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.csproj.GenerateResource.Cache
-c:\users\admin\documents\visual studio 2013\Projects\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.exe
-c:\users\admin\documents\visual studio 2013\Projects\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.pdb
-c:\users\admin\documents\visual studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Form1.resources
 c:\users\admin\documents\visual studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.exe
-c:\users\admin\documents\visual studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.pdb
 C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.exe.config
 C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.exe
 C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.pdb
@@ -16,3 +8,7 @@ C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Debug\
 C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Properties.Resources.resources
 C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.csproj.GenerateResource.Cache
 C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Lazy_COM.resources
+C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Lazy_COM.resources
+C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Properties.Resources.resources
+C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.csproj.GenerateResource.Cache
+C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.pdb

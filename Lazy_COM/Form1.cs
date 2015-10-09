@@ -29,7 +29,7 @@ namespace Lazy_COM
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
 
-            this.notifyIcon1.MouseDoubleClick += new MouseEventHandler(notifyIcon1_MouseDoubleClick);
+            //this.notifyIcon1.MouseDoubleClick += new MouseEventHandler(notifyIcon1_MouseDoubleClick);
             //this.Resize += new System.EventHandler(this.Form1_Resize);
             
             //настройка меню трея
@@ -37,7 +37,8 @@ namespace Lazy_COM
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.оПрограммеToolStripMenuItem, this.выходToolStripMenuItem });
             
             //запуск потока
-            Thread backgroundThread = new Thread(checkPorts); 
+            Thread backgroundThread = new Thread(checkPorts);
+            backgroundThread.IsBackground = true;
             backgroundThread.Start();
             //по дефолту виден только трей
             notifyIcon1.Visible = true;
@@ -77,25 +78,18 @@ namespace Lazy_COM
         }
 
 
-        /*
+         
         private void Form1_Resize(object sender, EventArgs e)
         {
 
             if (WindowState == FormWindowState.Minimized)
             {
-                Hide();
-                notifyIcon1.Visible = true;  
+                //Hide();
+                 
+                this.ShowInTaskbar = false;
             }
         }
 
-        */
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            //this.Show();
-            //notifyIcon1.Visible = false;
-            //WindowState = FormWindowState.Normal;
-        }
      
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -110,6 +104,14 @@ namespace Lazy_COM
                 portList += port + "\r\n";
             }
             this.notifyIcon1.ShowBalloonTip(1000, "COM-Ports:", portList, ToolTipIcon.Info); 
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            //notifyIcon1.Visible = false;
+            WindowState = FormWindowState.Normal;
+            this.ShowInTaskbar = true;
         }
     }
 }
