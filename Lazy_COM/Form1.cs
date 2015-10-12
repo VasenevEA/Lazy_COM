@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lazy_COM
@@ -20,28 +21,7 @@ namespace Lazy_COM
 
         public Lazy_COM()
         {
-            
-
             InitializeComponent();
-
-            
-            
-            this.WindowState = FormWindowState.Minimized;
-            this.ShowInTaskbar = false;
-
-            //this.notifyIcon1.MouseDoubleClick += new MouseEventHandler(notifyIcon1_MouseDoubleClick);
-            //this.Resize += new System.EventHandler(this.Form1_Resize);
-            
-            //настройка меню трея
-            notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.оПрограммеToolStripMenuItem, this.выходToolStripMenuItem });
-            
-            //запуск потока
-            Thread backgroundThread = new Thread(checkPorts);
-            backgroundThread.IsBackground = true;
-            backgroundThread.Start();
-            //по дефолту виден только трей
-            notifyIcon1.Visible = true;
         }
  
         private void checkPorts()
@@ -93,7 +73,8 @@ namespace Lazy_COM
      
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            notifyIcon1.Dispose();
+            Application.Exit();
         }
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
@@ -112,6 +93,60 @@ namespace Lazy_COM
             //notifyIcon1.Visible = false;
             WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
+        }
+
+        private void АвтозагрузкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+             var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+             if (key.GetValue("Lazy_COM") != null)
+             {
+                 key.DeleteValue("Lazy_COM");
+             }
+             else
+             {
+                 key.SetValue("Lazy_COM", Application.ExecutablePath);
+             }
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+            if (key.GetValue("Lazy_COM") != null)
+            {
+                АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Да)";
+            }
+            else
+            {
+                АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Нет)";
+            }
+        }
+
+        private void Lazy_COM_Load(object sender, EventArgs e)
+        {
+            Process[] pr = Process.GetProcessesByName("Lazy_COM");
+            if (pr.Length > 1)
+            {
+                MessageBox.Show("Приложение уже запущено!");
+                Application.Exit();
+            }
+
+            Thread backgroundThread = new Thread(checkPorts);
+            backgroundThread.IsBackground = true;
+
+            //настройка меню трея
+            notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.оПрограммеToolStripMenuItem, this.АвтозагрузкаToolStripMenuItem, this.выходToolStripMenuItem });
+
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
+
+            //this.notifyIcon1.MouseDoubleClick += new MouseEventHandler(notifyIcon1_MouseDoubleClick);
+            //this.Resize += new System.EventHandler(this.Form1_Resize);
+
+            backgroundThread.Start();
+
+            notifyIcon1.Visible = true;
         }
     }
 }

@@ -6,3 +6,14 @@ C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Relea
 C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Release\Lazy_COM.csproj.GenerateResource.Cache
 C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Release\Lazy_COM.exe
 C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Release\Lazy_COM.pdb
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\bin\ReleaseAll\Lazy_COM.exe.config
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\bin\ReleaseAll\Lazy_COM.exe
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\bin\ReleaseAll\Lazy_COM.pdb
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Release\Lazy_COM.Lazy_COM.resources
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Release\Lazy_COM.Properties.Resources.resources
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Release\Lazy_COM.csproj.GenerateResource.Cache
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\bin\Release\Lazy_COM.exe.config
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\bin\Release\Lazy_COM.exe
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\bin\Release\Lazy_COM.pdb
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Release\Lazy_COM.exe
+C:\Users\Jack\Documents\Visual Studio 2012\Projects\Lazy_COM\Lazy_COM\obj\Release\Lazy_COM.pdb
