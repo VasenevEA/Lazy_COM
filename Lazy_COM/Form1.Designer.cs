@@ -82,8 +82,9 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Lazy_COM";
+            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form1";
+            this.Text = "Lazy_COM";
             this.Load += new System.EventHandler(this.Lazy_COM_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);

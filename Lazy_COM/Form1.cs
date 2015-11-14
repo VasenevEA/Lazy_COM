@@ -22,6 +22,7 @@ namespace Lazy_COM
         public Lazy_COM()
         {
             InitializeComponent();
+            
         }
  
         private void checkPorts()
@@ -80,19 +81,26 @@ namespace Lazy_COM
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
             string portList = "";
+            
             foreach (string port in oldPorts)
             {
                 portList += port + "\r\n";
             }
+            if(portList.Length != 0)
+            {
             this.notifyIcon1.ShowBalloonTip(1000, "COM-Ports:", portList, ToolTipIcon.Info); 
+            }
+            else
+            {
+                this.notifyIcon1.ShowBalloonTip(1000, "COM-Ports:", "None", ToolTipIcon.Info);
+            }
         }
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Show();
+             
             //notifyIcon1.Visible = false;
-            WindowState = FormWindowState.Normal;
-            this.ShowInTaskbar = true;
+            new About().Show();
         }
 
         private void АвтозагрузкаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -114,11 +122,13 @@ namespace Lazy_COM
             var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
             if (key.GetValue("Lazy_COM") != null)
             {
-                АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Да)";
+               // АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Да)";
+                АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Checked;
             }
             else
             {
-                АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Нет)";
+               // АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Нет)";
+                АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Unchecked;
             }
         }
 
@@ -139,6 +149,7 @@ namespace Lazy_COM
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.оПрограммеToolStripMenuItem, this.АвтозагрузкаToolStripMenuItem, this.выходToolStripMenuItem });
 
             this.WindowState = FormWindowState.Minimized;
+            this.Visible = false;
             this.ShowInTaskbar = false;
 
             //this.notifyIcon1.MouseDoubleClick += new MouseEventHandler(notifyIcon1_MouseDoubleClick);
@@ -147,6 +158,8 @@ namespace Lazy_COM
             backgroundThread.Start();
 
             notifyIcon1.Visible = true;
+
+            АвтозагрузкаToolStripMenuItem.CheckOnClick = true;
         }
     }
 }
