@@ -51,28 +51,28 @@
             this.оПрограммеToolStripMenuItem,
             this.АвтозагрузкаToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.выходToolStripMenuItem.Text = "Exit";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.оПрограммеToolStripMenuItem.Text = "About...";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // АвтозагрузкаToolStripMenuItem
             // 
             this.АвтозагрузкаToolStripMenuItem.Name = "АвтозагрузкаToolStripMenuItem";
-            this.АвтозагрузкаToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка";
+            this.АвтозагрузкаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.АвтозагрузкаToolStripMenuItem.Text = "Autoload";
             this.АвтозагрузкаToolStripMenuItem.Click += new System.EventHandler(this.АвтозагрузкаToolStripMenuItem_Click);
             // 
             // Lazy_COM

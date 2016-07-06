@@ -6,7 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -17,14 +17,61 @@ namespace Lazy_COM
     {
         static string[] oldPorts = new string[] {};
         static string[] newPorts = new string[] {};
-        static string[] equalsPorts = new string[] { };
+
+        bool isElevated;
+
 
         public Lazy_COM()
         {
             InitializeComponent();
-            
         }
- 
+
+        private static List<string> getEqualsPorts(string[] oldPorts, string[] newPorts)
+        {
+            List<string> equalsPort = new List<string>();
+
+            if (newPorts.Length > oldPorts.Length)
+            {
+                for (int i = 0; i < newPorts.Length; i++)
+                {
+                    int s = 0;
+                    for (int j = 0; j < oldPorts.Length; j++)
+                    {
+
+                        if (newPorts[i] == oldPorts[j])
+                        {
+                            s = +1;
+                        }
+                    }
+                    if (s == 0)
+                    {
+                        equalsPort.Add(newPorts[i]);
+                    }
+                }
+            }
+
+            if (newPorts.Length < oldPorts.Length)
+            {
+                for (int i = 0; i < oldPorts.Length; i++)
+                {
+                    int s = 0;
+                    for (int j = 0; j < newPorts.Length; j++)
+                    {
+
+                        if (oldPorts[i] == newPorts[j])
+                        {
+                            s = +1;
+                        }
+                    }
+                    if (s == 0)
+                    {
+                        equalsPort.Add(oldPorts[i]);
+                    }
+                }
+            }
+            return equalsPort;
+        }
+        
         private void checkPorts()
         {
             oldPorts = SerialPort.GetPortNames();
@@ -35,11 +82,11 @@ namespace Lazy_COM
                 Thread.Sleep(2000);
                 newPorts = SerialPort.GetPortNames();
 
-                equalsPorts = oldPorts.Except(newPorts).Concat(newPorts.Except(oldPorts)).ToArray(); // linq выражения для нахождения разницы между двумя 
-                 
-                if(equalsPorts.Length > 0 )
+               // equalsPorts = oldPorts.Except(newPorts).Concat(newPorts.Except(oldPorts)).ToArray(); // linq выражения для нахождения разницы между двумя 
+
+                if (newPorts.Length != oldPorts.Length)
                 {
-                    foreach (string portName in equalsPorts)
+                    foreach (string portName in getEqualsPorts(oldPorts,newPorts))
                     {
                         if (newPorts.Length > oldPorts.Length)
                         {
@@ -57,9 +104,7 @@ namespace Lazy_COM
                 
             }
         }
-
-
-         
+      
         private void Form1_Resize(object sender, EventArgs e)
         {
 
@@ -105,31 +150,49 @@ namespace Lazy_COM
 
         private void АвтозагрузкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+            
 
-             var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-             if (key.GetValue("Lazy_COM") != null)
-             {
-                 key.DeleteValue("Lazy_COM");
-             }
-             else
-             {
-                 key.SetValue("Lazy_COM", Application.ExecutablePath);
-             }
+            if (isElevated)
+            {
+                var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+                if (key.GetValue("Lazy_COM") != null)
+                {
+                    key.DeleteValue("Lazy_COM");
+                }
+                else
+                {
+                    key.SetValue("Lazy_COM", Application.ExecutablePath);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Run program as administator");
+            }
+           
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-            if (key.GetValue("Lazy_COM") != null)
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            isElevated = principal.IsInRole(WindowsBuiltInRole.Administrator);
+
+            if (isElevated)
             {
-               // АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Да)";
-                АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Checked;
+                var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
+                if (key.GetValue("Lazy_COM") != null)
+                {
+                    // АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Да)";
+                    АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Checked;
+                }
+                else
+                {
+                    // АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Нет)";
+                    АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Unchecked;
+                }
             }
-            else
-            {
-               // АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Нет)";
-                АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Unchecked;
-            }
+            
         }
 
         private void Lazy_COM_Load(object sender, EventArgs e)

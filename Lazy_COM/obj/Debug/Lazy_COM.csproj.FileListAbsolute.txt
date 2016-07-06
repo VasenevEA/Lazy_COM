@@ -12,3 +12,23 @@ C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug
 C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Properties.Resources.resources
 C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.csproj.GenerateResource.Cache
 C:\Users\admin\Documents\Visual Studio 2013\Projects\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.pdb
+D:\Development\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.exe.config
+D:\Development\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.exe
+D:\Development\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.pdb
+D:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.About.resources
+D:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Lazy_COM.resources
+D:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Properties.Resources.resources
+D:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.csproj.GenerateResource.Cache
+D:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.exe
+D:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.pdb
+D:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.csprojResolveAssemblyReference.cache
+C:\Development\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.exe.config
+C:\Development\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.exe
+C:\Development\Lazy_COM\Lazy_COM\bin\Debug\Lazy_COM.pdb
+C:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.csprojResolveAssemblyReference.cache
+C:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.About.resources
+C:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Lazy_COM.resources
+C:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.Properties.Resources.resources
+C:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.csproj.GenerateResource.Cache
+C:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.exe
+C:\Development\Lazy_COM\Lazy_COM\obj\Debug\Lazy_COM.pdb
