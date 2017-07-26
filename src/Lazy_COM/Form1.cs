@@ -82,8 +82,6 @@ namespace Lazy_COM
                 Thread.Sleep(2000);
                 newPorts = SerialPort.GetPortNames();
 
-               // equalsPorts = oldPorts.Except(newPorts).Concat(newPorts.Except(oldPorts)).ToArray(); // linq выражения для нахождения разницы между двумя 
-
                 if (newPorts.Length != oldPorts.Length)
                 {
                     foreach (string portName in getEqualsPorts(oldPorts,newPorts))
@@ -140,14 +138,7 @@ namespace Lazy_COM
                 this.notifyIcon1.ShowBalloonTip(1000, "COM-Ports:", "None", ToolTipIcon.Info);
             }
         }
-
-        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-             
-            //notifyIcon1.Visible = false;
-            new About().Show();
-        }
-
+ 
         private void АвтозагрузкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -209,19 +200,14 @@ namespace Lazy_COM
 
             //настройка меню трея
             notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.оПрограммеToolStripMenuItem, this.АвтозагрузкаToolStripMenuItem, this.выходToolStripMenuItem });
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.АвтозагрузкаToolStripMenuItem, this.выходToolStripMenuItem });
 
             this.WindowState = FormWindowState.Minimized;
             this.Visible = false;
             this.ShowInTaskbar = false;
 
-            //this.notifyIcon1.MouseDoubleClick += new MouseEventHandler(notifyIcon1_MouseDoubleClick);
-            //this.Resize += new System.EventHandler(this.Form1_Resize);
-
             backgroundThread.Start();
-
             notifyIcon1.Visible = true;
-
             АвтозагрузкаToolStripMenuItem.CheckOnClick = true;
         }
     }
