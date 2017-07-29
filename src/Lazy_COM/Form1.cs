@@ -32,7 +32,7 @@ namespace LazyCOM
                 {
                     var symbol = (isAdded) ? "+" : "-";
                     var Title = (isAdded) ? "Connected:" : "Disconnected:";
-                    this.notifyIcon1.ShowBalloonTip(500, "", symbol + portName, ToolTipIcon.Info);
+                    this.notifyIcon1.ShowBalloonTip(500, Title, symbol + portName, ToolTipIcon.Info);
 
                     Thread.Sleep(1000);
                 }
