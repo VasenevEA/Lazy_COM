@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO.Ports;
+using System.Management;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
@@ -15,8 +16,8 @@ namespace Lazy_COM
 {
     public partial class Lazy_COM : Form
     {
-        static string[] oldPorts = new string[] {};
-        static string[] newPorts = new string[] {};
+        static string[] oldPorts = new string[] { };
+        static string[] newPorts = new string[] { };
 
         bool isElevated;
 
@@ -71,50 +72,50 @@ namespace Lazy_COM
             }
             return equalsPort;
         }
-        
+
         private void checkPorts()
         {
             oldPorts = SerialPort.GetPortNames();
 
             while (true)
             {
-                
+
                 Thread.Sleep(2000);
                 newPorts = SerialPort.GetPortNames();
 
                 if (newPorts.Length != oldPorts.Length)
                 {
-                    foreach (string portName in getEqualsPorts(oldPorts,newPorts))
+                    foreach (string portName in getEqualsPorts(oldPorts, newPorts))
                     {
                         if (newPorts.Length > oldPorts.Length)
                         {
-                            this.notifyIcon1.ShowBalloonTip(500, "COM-Port! ", "+"+portName, ToolTipIcon.Info);    
+                            this.notifyIcon1.ShowBalloonTip(500, "COM-Port! ", "+" + portName, ToolTipIcon.Info);
                         }
-                        if(newPorts.Length < oldPorts.Length)
+                        if (newPorts.Length < oldPorts.Length)
                         {
-                            this.notifyIcon1.ShowBalloonTip(500, "COM-Port!", "-"+portName, ToolTipIcon.Info); 
+                            this.notifyIcon1.ShowBalloonTip(500, "COM-Port!", "-" + portName, ToolTipIcon.Info);
                         }
 
                         Thread.Sleep(2000);
                     }
                     oldPorts = newPorts;
                 }
-                
+
             }
         }
-      
+
         private void Form1_Resize(object sender, EventArgs e)
         {
 
             if (WindowState == FormWindowState.Minimized)
             {
                 //Hide();
-                 
+
                 this.ShowInTaskbar = false;
             }
         }
 
-     
+
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             notifyIcon1.Dispose();
@@ -124,25 +125,25 @@ namespace Lazy_COM
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
             string portList = "";
-            
+
             foreach (string port in oldPorts)
             {
-                portList += port + "\r\n";
+                portList += getPortDescription(port) + "\r\n";
             }
-            if(portList.Length != 0)
+            if (portList.Length != 0)
             {
-            this.notifyIcon1.ShowBalloonTip(1000, "COM-Ports:", portList, ToolTipIcon.Info); 
+                this.notifyIcon1.ShowBalloonTip(1000, "COM-Ports:", portList, ToolTipIcon.Info);
             }
             else
             {
                 this.notifyIcon1.ShowBalloonTip(1000, "COM-Ports:", "None", ToolTipIcon.Info);
             }
         }
- 
+
         private void АвтозагрузкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            
+
+
 
             if (isElevated)
             {
@@ -160,7 +161,7 @@ namespace Lazy_COM
             {
                 MessageBox.Show("Run program as administator");
             }
-           
+
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -183,7 +184,7 @@ namespace Lazy_COM
                     АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Unchecked;
                 }
             }
-            
+
         }
 
         private void Lazy_COM_Load(object sender, EventArgs e)
@@ -200,7 +201,7 @@ namespace Lazy_COM
 
             //настройка меню трея
             notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.АвтозагрузкаToolStripMenuItem, this.выходToolStripMenuItem });
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.АвтозагрузкаToolStripMenuItem, this.выходToolStripMenuItem });
 
             this.WindowState = FormWindowState.Minimized;
             this.Visible = false;
@@ -209,6 +210,18 @@ namespace Lazy_COM
             backgroundThread.Start();
             notifyIcon1.Visible = true;
             АвтозагрузкаToolStripMenuItem.CheckOnClick = true;
+        }
+
+        private string getPortDescription(string portName)
+        {
+            var ports = new string[] { };
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2",
+                "SELECT * FROM Win32_PnPEntity WHERE Caption LIKE '%"+ portName+"%'");
+            var portDesctiprion = String.Empty;
+            foreach (ManagementObject queryObj in searcher.Get())
+                portDesctiprion = queryObj["Caption"] as string;
+
+            return portDesctiprion;
         }
     }
 }
