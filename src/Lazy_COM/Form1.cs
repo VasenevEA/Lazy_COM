@@ -8,18 +8,17 @@ using System.Security.Principal;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Lazy_COM
+namespace LazyCOM
 {
-    public partial class Lazy_COM : Form
+    public partial class LazyCOM : Form
     {
         static string[] oldPorts = SerialPort.GetPortNames();
         bool isAdmin;
 
-        public Lazy_COM()
+        public LazyCOM()
         {
             InitializeComponent();
         }
-
 
         private void CheckPorts()
         {
@@ -121,19 +120,16 @@ namespace Lazy_COM
 
         private void AutoloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
-
             if (isAdmin)
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                if (key.GetValue("Lazy_COM") != null)
+                if (key.GetValue("LazyCOM") != null)
                 {
-                    key.DeleteValue("Lazy_COM");
+                    key.DeleteValue("LazyCOM");
                 }
                 else
                 {
-                    key.SetValue("Lazy_COM", Application.ExecutablePath);
+                    key.SetValue("LazyCOM", Application.ExecutablePath);
                 }
             }
             else
@@ -152,7 +148,7 @@ namespace Lazy_COM
             if (isAdmin)
             {
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
-                if (key.GetValue("Lazy_COM") != null)
+                if (key.GetValue("LazyCOM") != null)
                 {
                     // АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Да)";
                     АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Checked;
@@ -166,9 +162,9 @@ namespace Lazy_COM
 
         }
 
-        private void Lazy_COM_Load(object sender, EventArgs e)
+        private void LazyCOM_Load(object sender, EventArgs e)
         {
-            Process[] pr = Process.GetProcessesByName("Lazy_COM");
+            Process[] pr = Process.GetProcessesByName("LazyCOM");
             if (pr.Length > 1)
             {
                 MessageBox.Show("Приложение уже запущено!");

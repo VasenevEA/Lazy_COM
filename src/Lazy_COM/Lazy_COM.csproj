@@ -7,8 +7,8 @@
     <ProjectGuid>{CFB1C25D-01E4-4939-9107-E73390FC453A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Lazy_COM</RootNamespace>
-    <AssemblyName>Lazy_COM</AssemblyName>
+    <RootNamespace>LazyCOM</RootNamespace>
+    <AssemblyName>LazyCOM</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>опубликовать\</PublishUrl>

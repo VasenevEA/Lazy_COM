@@ -1,6 +1,6 @@
-﻿namespace Lazy_COM
+﻿namespace LazyCOM
 {
-    partial class Lazy_COM
+    partial class LazyCOM
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Lazy_COM));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LazyCOM));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,7 +40,7 @@
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Lazy_COM";
+            this.notifyIcon1.Text = "LazyCOM";
             this.notifyIcon1.DoubleClick += new System.EventHandler(this.NotifyIcon1_DoubleClick);
             // 
             // contextMenuStrip1
@@ -66,17 +66,17 @@
             this.АвтозагрузкаToolStripMenuItem.Text = "Autoload";
             this.АвтозагрузкаToolStripMenuItem.Click += new System.EventHandler(this.AutoloadToolStripMenuItem_Click);
             // 
-            // Lazy_COM
+            // LazyCOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Lazy_COM";
+            this.Name = "LazyCOM";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Lazy_COM";
-            this.Load += new System.EventHandler(this.Lazy_COM_Load);
+            this.Text = "LazyCOM";
+            this.Load += new System.EventHandler(this.LazyCOM_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);

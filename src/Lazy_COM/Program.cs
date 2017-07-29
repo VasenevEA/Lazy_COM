@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Lazy_COM
+namespace LazyCOM
 {
     static class Program
     {
@@ -17,7 +17,7 @@ namespace Lazy_COM
             
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Lazy_COM());
+                Application.Run(new LazyCOM());
             
         }
     }
