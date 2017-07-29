@@ -22,7 +22,6 @@ namespace LazyCOM
 
         private void CheckPorts()
         {
-
             while (true)
             {
                 Thread.Sleep(2000);
@@ -136,7 +135,6 @@ namespace LazyCOM
             {
                 MessageBox.Show("Run program as administator");
             }
-
         }
 
         private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -150,12 +148,10 @@ namespace LazyCOM
                 var key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run\", true);
                 if (key.GetValue("LazyCOM") != null)
                 {
-                    // АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Да)";
                     АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Checked;
                 }
                 else
                 {
-                    // АвтозагрузкаToolStripMenuItem.Text = "Автозагрузка(Нет)";
                     АвтозагрузкаToolStripMenuItem.CheckState = CheckState.Unchecked;
                 }
             }
