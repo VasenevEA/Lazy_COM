@@ -41,7 +41,7 @@
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Lazy_COM";
-            this.notifyIcon1.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            this.notifyIcon1.DoubleClick += new System.EventHandler(this.NotifyIcon1_DoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -50,21 +50,21 @@
             this.АвтозагрузкаToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(124, 48);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1_Opening);
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
             this.выходToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.выходToolStripMenuItem.Text = "Exit";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // АвтозагрузкаToolStripMenuItem
             // 
             this.АвтозагрузкаToolStripMenuItem.Name = "АвтозагрузкаToolStripMenuItem";
             this.АвтозагрузкаToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.АвтозагрузкаToolStripMenuItem.Text = "Autoload";
-            this.АвтозагрузкаToolStripMenuItem.Click += new System.EventHandler(this.АвтозагрузкаToolStripMenuItem_Click);
+            this.АвтозагрузкаToolStripMenuItem.Click += new System.EventHandler(this.AutoloadToolStripMenuItem_Click);
             // 
             // Lazy_COM
             // 
